@@ -29,8 +29,7 @@ function userInput() {
 
 
 async function fetchCharacters() {
-  try {
-
+  try {    
     const response = await fetch(APIURL + `characters?nameStartsWith=${searchInput.value.trim()}` + APIKEY)
     const data = await response.json();
     console.log(data)
@@ -49,7 +48,7 @@ async function fetchCharacters() {
 
 
 function renderCharacters(characters) {
-  console.log(characters)
+  console.log(characters)  
   cardContainer.innerHTML = '';
   if (characters.length > 0) {
     for (const character of characters) {
@@ -77,6 +76,7 @@ function renderCharacters(characters) {
 function renderCard(element, data) {
 
   element.innerHTML = `
+                  <a href="pages/descriptionPage.html?id=${data.id}" target="_blank">
                   <div class="flip-card-inner"  id="movie-info-${data.id}">
                     <div class="flip-card-front">
                       <img
@@ -92,6 +92,7 @@ function renderCard(element, data) {
                       </p>
                     </div>
                   </div>
+                  </a>
                    `
 }
 

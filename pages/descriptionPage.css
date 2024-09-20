@@ -1,4 +1,13 @@
 *{margin: 0; padding: 0; background-color: #323643;}
+/* body{
+  background-color: #232323;
+  padding: 10vh;
+} */
+.all-div{
+  background-color: #232323;
+  padding: 10.5vh 30vh;
+  height: max-content;
+}
 .navbar{
     /* background-color: #181818; */
     /* background-color: #393e46; */
@@ -7,6 +16,8 @@
 }
 header{
   /* background-color: red; */
+  display: none;
+
 }
 .nav .logo img{
   width: 30vh;
@@ -17,6 +28,7 @@ header{
     justify-content: space-between;
 }
 .nav ul{
+  display: none;
     /* position: relative;
     top: -4vh;
     float: right; */
@@ -48,31 +60,58 @@ header{
 }
 .center-content{
     /* background-color: #323643; */
-    height: 90vh;
+    /* border: 2px solid red; */
+    border-radius: 3vh;
+    height: 70vh;
     padding-top: 3vh;
-    padding-bottom: 3vh;
+    padding-bottom: 6vh;
+  transition: 0.8s ease-in-out;
+}
+.center-content:hover .icon1{
+  display: none;
+}
+.center-content:hover .icon2{
+  display: block;
 }
 .title-content{
     text-align: center;
+  margin: 0px 8vh;
 }
 .title-content h2{
+  /* background-color: ; */
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     letter-spacing: 5px;
-    font-size: 7vh;
+    font-size: 5vh;
     color: white;
     text-decoration: underline;
 }
+.title-content span{
+  position: relative;
+  top: -3vh;
+  font-size: 3vh;
+  color: white;
+  float: right;
+  /* border: 2px solid red; */
+}
+/* .title-content .cross1{
+
+} */
+.title-content .icon2{
+  display: none;
+}
 .layer-content{
     /* background-color: red; */
+    /* border: 2px solid red; */
+    background-color: transparent;
     margin-top: 4vh;
     padding: 0 10vh;
-    height: 40vh;
+    /* height: 40vh; */
     display: flex;
     flex-direction: row;
     /* justify-content: space-between; */
 }
 .left-layer .img-div img{
-    width: 50vh;
+    width: 40vh;
     padding: 1vh;
     background-color: #3a4750;
     box-shadow: 0px 0px 11px 4px rgba(0,0,0,0.75);
@@ -115,12 +154,12 @@ header{
 .card-title{
   box-shadow: 0px 0px 11px 4px rgba(0,0,0,0.75);
   padding: 3vh 5vh;
-  width: 110vh;
+  /* width: auto; */
 }
 .card-title h2{
     font-family: Arial, Helvetica, sans-serif;
     color: white;
-    width: fit-content;
+    /* width: fit-content; */
     /* padding: 2px 3vh 1px 2vh; */
 }
 .card-title p{
@@ -244,16 +283,16 @@ header{
   
   /* ------ card style ----- */
   .card-hover {
-    width: 190px;
-    height: 254px;
+    width: 160px;
+    height: 160px;
     background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
     border-radius: 20px;
     transition: 0.6 ease-in-out;
    }
    
    .card2 {
-    width: 190px;
-    height: 254px;
+    width: 160px;
+    height: 160px;
     /* background-color: #1a1a1a; */
     border-radius: 3vh;
     transition: 0.6s ease-in-out;
@@ -281,18 +320,50 @@ header{
    .sugest-div h3 span{
     
    }
+   .comic-info{
+    /* border: 2px solid red; */
+    margin-top: 2vh;
+    display: grid;
+    grid-template-columns: auto auto auto;
+   }
+   .comic{
+    transition: 0.9s ease-in-out;
+   }
+   .box-color-hover:hover .comic{
+    /* background-color: rgba(192, 192, 192, 0.429); */
+    background-color: black;
+    border: 2px solid white;
+    color: white;
+   }
+   .comic-info .comic{
+    border: 2px solid rgba(0, 0, 0, 0.678);
+    border-radius: 1vh;
+    background-color: rgba(192, 192, 192, 0.295);
+    width: max-content;
+    padding: 1vh;
+    text-align: center;
+   }
+   .comic-info .comic h2{
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    font-size: 3vh;
+    background-color: transparent;
+   }
+   .comic-info .comic p{
+    background-color: #3a4750;
+   }
    .sugest{
     /* border: 2px solid red; */
     margin-top: 2vh;
-    width: fit-content;
+    /* width: fit-content; */
     display: grid;
     grid-template-columns: auto auto auto;
     /* justify-content: space-between; */
     gap: 60px;
    }
    .card2 img{
-    height: 100%;
-    width: 100%;
+    height: 70%;
+    width: 70%;
     filter: grayscale(1);
     transition: 0.4s ease-in-out;
     /* border: 1px solid silver; */

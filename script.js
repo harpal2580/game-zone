@@ -4,8 +4,15 @@ let hash = "d35377547e551cd64a60657d2517bb7f";
 const APIURL = "https://gateway.marvel.com/v1/public/";
 const APIKEY = `&apikey=${PUBLICKEY}&hash=${hash}?ts=1`
 
+const searchContainer = document.querySelector('.searchContainer')
 const searchInput = document.getElementById('search-input')
 const cardContainer = document.querySelector('.cardBox')
+
+
+const characterTitle = document.getElementById('character-title')
+const characterImage = document.getElementById('character-image')
+const characterDescription = document.getElementById('character-description')
+
 
 
 /*Show section on the menu */
@@ -76,8 +83,8 @@ function renderCharacters(characters) {
 function renderCard(element, data) {
 
   element.innerHTML = `
-                  <a href="pages/descriptionPage.html?id=${data.id}" target="_blank">
-                  <div class="flip-card-inner"  id="movie-info-${data.id}">
+                 
+                  <div class="flip-card-inner"  id="movie-info-card-${data.id}">
                     <div class="flip-card-front">
                       <img
                          src="${data.thumbnail.path + '/standard_fantastic.' + data.thumbnail.extension}"
@@ -85,17 +92,31 @@ function renderCard(element, data) {
                       />
                       <p class="title">${data.name}</p>
                     </div>
-                    <div class="flip-card-back">
+                    <div class="flip-card-back" id="movie-info-${data.id}">
                       <p class="title">${data.name}</p>
                       <p>
                       ${data.description}
                       </p>
                     </div>
                   </div>
-                  </a>
+                
                    `
+        if(data.id !='null'){
+          setTimeout(()=>{
+              const movieInfoContainer = document.getElementById(`movie-info-${data.id}`)
+              movieInfoContainer?.addEventListener('click',()=>moreInfo(data.id))
+          },1000)
+        }
 }
 
+async function moreInfo(id) {
+
+  const movieInfoContainer = document.querySelector('.center-content')
+  console.log(searchContainer)
+  searchContainer.style.display='none'
+  movieInfoContainer.style.display='block';
+  console.log('==')
+}
 
 userInput()
 

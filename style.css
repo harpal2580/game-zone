@@ -782,8 +782,17 @@ header{
  /* ------save/bookmark----- */
  .sugest-div .bookmark{
   position: relative;
-  top: 10vh;
+  top: 8vh;
   font-size: 5vh;
   /* border: 2px solid red; */
   float: right;
+  right: -22vh;
+ }
+
+ #close-more-info:hover{
+  cursor: pointer;
+ }
+
+ .add-to-favorites-button{
+  color:white
  }

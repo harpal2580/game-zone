@@ -7,12 +7,15 @@ const APIKEY = `&apikey=${PUBLICKEY}&hash=${hash}?ts=1`
 const searchContainer = document.querySelector('.searchContainer')
 const searchInput = document.getElementById('search-input')
 const cardContainer = document.querySelector('.cardBox')
+const movieInfoContainer = document.querySelector('#movie-card-container')
 
 
 const characterTitle = document.getElementById('character-title')
 const characterImage = document.getElementById('character-image')
 const characterDescription = document.getElementById('character-description')
 
+const favoritelistCardContainer = document.querySelector('.favourite-card-container') 
+let favoriteListLocalStorage = JSON.parse(localStorage.getItem('favoriteListLocalStorage'))
 
 
 /*Show section on the menu */
@@ -111,7 +114,7 @@ function renderCard(element, data) {
 
 async function moreInfo(id) {
 
-  const movieInfoContainer = document.querySelector('#movie-card-container')
+
 
   searchContainer.style.display='none'
   movieInfoContainer.style.display='block';
@@ -121,8 +124,7 @@ async function moreInfo(id) {
     const request  = await fetch(APIURL + `/characters/${id}?apikey=${PUBLICKEY}`);
     const data = await request.json();
     if (data.status == 'Ok') {
-          console.log(data);
-          
+
         data.data.results.forEach(response=>{
             
             response.id = (response.id !='') ? response.id : 'Not Available';
@@ -138,8 +140,20 @@ async function moreInfo(id) {
 
             renderCharacterMoreInfo(element,response)
             movieInfoContainer.appendChild(element)
-        })
+ 
+              const checkItemLocalStorage = favoriteListLocalStorage.find(item=> parseInt(item) === response.id)
+              if(checkItemLocalStorage){
+                  document.querySelector('.add-to-favorites-button').innerHTML = 'Remove From Favorites'
+              }else{
+                  document.querySelector('.add-to-favorites-button').innerHTML = 'Add To Favorites'
+              }
+          })
 
+    }else{
+
+      movieInfoContainer.innerHTML=`<div class="no-record-found">
+        <img src="https://cdn-icons-png.flaticon.com/256/7465/7465691.png">
+      </div>`
     }
     
   } catch (error) {
@@ -151,8 +165,8 @@ async function renderCharacterMoreInfo(element,data){
 
     element.innerHTML=`
          <div class="title-content">
-              <h2>Card Details</h2>
-              <span class="icon1"><i class="fa-solid fa-right-from-bracket"></i></span>
+              <h2>Character Details</h2>
+              <span class="icon1" id="close-more-info"><i class="fa-solid fa-right-from-bracket"></i></span>
             </div>
             <div class="layer-content">
               <div class="left-layer">
@@ -163,7 +177,9 @@ async function renderCharacterMoreInfo(element,data){
                   />
                 </div>
                 <div class="submit-button">
-                  <a href=""><h3>Click Me</h3></a>
+                  <div id="add-to-favorite-${data.id}">
+                    <span class="add-to-favorites-button" id="favoriteslist-button-${data.id}">Add To Favorite</span>
+                  </div>
                 </div>
               </div>
       
@@ -177,24 +193,24 @@ async function renderCharacterMoreInfo(element,data){
                 
                 <!-- ----- suggestion div------ -->
                  <div class="sugest-div">
-                  <h3>Suggestion Card <span><i class="fa-solid fa-circle-info"></i></span></h3>
+                  <h3>Count <span><i class="fa-solid fa-circle-info"></i></span></h3>
                 <div class="comic-info box-color-hover">
                   <div class="comic box-color-hover">
-                    <h2>Comic title</h2>
+                    <h2> Comics</h2>
                     <p> ${data.comics.available}</p>
                   </div>
       
                   <div class="comic box-color-hover">
-                    <h2>Series title</h2>
+                    <h2> Series</h2>
                     <p>${data.series.available}</p>
                   </div>
       
                   <div class="comic box-color-hover">
-                    <h2>Stories title</h2>
+                    <h2> Stories</h2>
                     <p>${data.stories.available}</p>
                   </div>
                   <div class="comic box-color-hover">
-                    <h2>Events title</h2>
+                    <h2> Events</h2>
                     <p>${data.events.available}</p>
                   </div>
                 </div>
@@ -207,7 +223,81 @@ async function renderCharacterMoreInfo(element,data){
             </div>
     `;
 
+    setTimeout(() => {
+      const closeMoreInfo = document.getElementById('close-more-info');
+      closeMoreInfo?.addEventListener('click', function () {
+          closeMore();
+      })
+
+      const addToFavoriteBtn = document.getElementById(`add-to-favorite-${data.id}`)
+      addToFavoriteBtn?.addEventListener('click',function(){
+        addToFavoriteList(`${data.id}`)
+      })
+    }, 1000);
 }
+
+
+if(favoriteListLocalStorage == null){
+  favoriteListLocalStorage=[];
+}
+
+function addToFavoriteList(id){
+
+  const infoFavoriteListButton = document.getElementById(`favoriteslist-button-${id}`) 
+  infoFavoriteListButton.innerHTML = (favoriteListLocalStorage.includes(id)) ? `Add To Favorite list` : 'Remove From Favorite List';
+
+  let index = favoriteListLocalStorage.indexOf(id)
+
+  if(index !== -1){
+    favoriteListLocalStorage.splice(index,1)
+    localStorage.setItem('favouriteListLocalStorage',JSON.stringify(favoriteListLocalStorage))
+    showFavoriteList();
+    return;
+  }
+
+  favoriteListLocalStorage.push(id);
+  localStorage.setItem('favouriteListLocalStorage',JSON.stringify(favoriteListLocalStorage))
+  showFavouriteList();
+}
+
+
+function showFavouriteList(){
+
+  favoritelistCardContainer.innerHTML=``;
+  if(favoriteListLocalStorage.length==""){
+    favoritelistCardContainer.innerHTML=` No Character in the favorite list`;
+  }else{
+    favoriteListLocalStorage.forEach(id=>{
+      addCharacterToDOM(id)
+    })
+  }
+
+}
+
+async function fetchDataAndUpdateDom(id){
+    const response = await fetch(`${APIURL}/characters/${id}?apikey=${PUBLICKEY}`)
+    const data = await response.json();
+    return data
+}
+
+async function addCharacterToDOM(id){
+  const data = await fetchDataAndUpdateDom(id)
+  console.log('asdfas')
+  console.log(data)
+}
+
+addEventListener("DOMContentLoaded", (event) => {
+  showFavouriteList();
+});
+
+
+
+function closeMore(){
+  movieInfoContainer.style.display='none';
+  searchContainer.style.display='block';
+  movieInfoContainer.innerHTML='';
+}
+
 
 userInput()
 

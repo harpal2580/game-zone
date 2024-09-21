@@ -121,7 +121,8 @@ async function moreInfo(id) {
     const request  = await fetch(APIURL + `/characters/${id}?apikey=${PUBLICKEY}`);
     const data = await request.json();
     if (data.status == 'Ok') {
-   
+          console.log(data);
+          
         data.data.results.forEach(response=>{
             
             response.id = (response.id !='') ? response.id : 'Not Available';
@@ -151,7 +152,7 @@ async function renderCharacterMoreInfo(element,data){
     element.innerHTML=`
          <div class="title-content">
               <h2>Card Details</h2>
-              <span class="icon1"><i class="fa-solid fa-right-from-bracket"></i></span>
+              <span class="icon1">❌<i class="fa-solid fa-right-from-bracket"></i></span>
               <span class="icon2"><i class="fa-solid fa-circle-xmark"></i></span>
             </div>
             <div class="layer-content">
@@ -179,7 +180,7 @@ async function renderCharacterMoreInfo(element,data){
                  <div class="sugest-div">
                   <h3>Suggestion Card <span><i class="fa-solid fa-circle-info"></i></span></h3>
                 <div class="comic-info box-color-hover">
-                  <div class="comic">
+                  <div class="comic box-color-hover">
                     <h2>Comic title</h2>
                     <p> ${data.comics.available}</p>
                   </div>
@@ -197,6 +198,9 @@ async function renderCharacterMoreInfo(element,data){
                     <h2>Events title</h2>
                     <p>${data.events.available}</p>
                   </div>
+                </div>
+                <div class="bookmark">
+                <span class="bm-icon">🔖<span>
                 </div>
               </div>
       

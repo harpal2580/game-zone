@@ -682,9 +682,9 @@ header{
 .title-content span{
   position: relative;
   top: -3vh;
-  font-size: 3vh;
+  font-size: 4vh;
   /* color: white; */
-  color: red;
+  color: white;
   float: right;
   /* border: 2px solid red; */
 }
@@ -692,8 +692,6 @@ header{
 
 } */
  .title-content span i{
-  color: #00ff75;
-  border: 1vh solid blue;
   padding: 1vh;
  }
 .title-content .icon2{

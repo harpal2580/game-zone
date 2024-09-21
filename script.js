@@ -152,8 +152,7 @@ async function renderCharacterMoreInfo(element,data){
     element.innerHTML=`
          <div class="title-content">
               <h2>Card Details</h2>
-              <span class="icon1">❌<i class="fa-solid fa-right-from-bracket"></i></span>
-              <span class="icon2"><i class="fa-solid fa-circle-xmark"></i></span>
+              <span class="icon1"><i class="fa-solid fa-right-from-bracket"></i></span>
             </div>
             <div class="layer-content">
               <div class="left-layer">

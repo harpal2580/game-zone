@@ -111,7 +111,7 @@ header{
 .searchContainer{
   color: red;
   background-color: #181818;
-  height: 150vh;
+  /* height: 150vh; */
   /* background-color: white; */
     /* background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%); */
     /* background-image: url(media/home_bg.png); */
@@ -122,7 +122,7 @@ header{
     background-color: #343434;
     /* background-image: linear-gradient(-20deg, #ddd6f3 0%, #faaca8 100%, #faaca8 100%); */
     /* background-image: url(media/home_bg.png); */
-    height: 91.7vh;
+    /* height: 91.7vh; */
 }
 /* --------------- card ----------------- */
 .search_card{
@@ -138,7 +138,7 @@ header{
     display: grid;
     grid-template-columns: auto auto auto auto;
     gap: 30px;
-    height: max-content;
+    /* height: max-content; */
 }
 /* From Uiverse.io by gharsh11032000 */ 
 .card {
@@ -796,3 +796,204 @@ header{
  .add-to-favorites-button{
   color:white
  }
+
+
+ /* -----fvrt style----- */
+ /* From Uiverse.io by suleymanlaarabidev */
+ .favourite-card-container{
+  padding-top: 10vh;
+  /* position: relative; */
+  top: 10vh;
+  left: 2vh;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  justify-content: space-around;
+  /* border: 2px solid red; */
+  width: 96%;
+  /* height: 100%; */
+  padding-left: 5vh;
+ } 
+.fvrt {
+  width: 190px;
+  height: 254px;
+  background: rgb(103, 225, 255);
+  transition: all 0.4s;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 5px  rgba(0, 0, 0, 0.705);
+  font-size: 30px;
+  font-weight: 900;
+}
+
+.fvrt:hover {
+  border-radius: 15px;
+  cursor: pointer;
+  transform: scale(1.2);
+  box-shadow: 0px 0px 10px 5px  rgba(0, 0, 0, 0.705);
+  background: rgb(103, 151, 255);
+}
+
+.first-content {
+  height: 100%;
+  width: 100%;
+  transition: all 0.4s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  border-radius: 15px;
+}
+.first-content img{
+  width: 100%;
+  border-radius: 10px;
+}
+
+.fvrt:hover .first-content {
+  height: 0px;
+  opacity: 0;
+}
+
+.second-content {
+  height: 0%;
+  width: 100%;
+  opacity: 0;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  border-radius: 15px;
+  transition: all 0.4s;
+  font-size: 1vh;
+  transform: rotate(90deg) scale(-1);
+}
+
+.fvrt:hover .second-content {
+  opacity: 1;
+  height: 100%;
+  font-size: 1.8rem;
+  transform: rotate(0deg);
+}
+.second-content .fvrt-card-content{
+  color: white;
+}
+/* --------------------------- */
+/* From Uiverse.io by gharsh11032000 */ 
+.fvrt-card {
+  position: relative;
+  width: 80%;
+  height: 170%;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  overflow: hidden;
+  perspective: 1000px;
+  box-shadow: 0 0 0 5px #ffffff80;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.fvrt-card img{
+  height: auto;
+width: 100%;
+}
+
+.fvrt-card svg {
+  width: 48px;
+  fill: #333;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.fvrt-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+}
+
+.fvrt-card__content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #f2f2f2;
+  transform: rotateX(-90deg);
+  transform-origin: bottom;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.fvrt-card:hover .fvrt-card__content {
+  transform: rotateX(0deg);
+}
+
+.fvrt-card__title {
+  margin: 0;
+  font-size: 24px;
+  color: #333;
+  font-weight: 700;
+}
+
+.fvrt-card:hover svg {
+  scale: 0;
+}
+
+.fvrt-card__description {
+  margin: 10px 0 0;
+  font-size: 14px;
+  color: #777;
+  line-height: 1.4;
+}
+/* ________________ */
+/* From Uiverse.io by joe-watson-sbf */ 
+.fvrt-flip-card {
+  background-color: transparent;
+  width: 190px;
+  height: 254px;
+  perspective: 1000px;
+  font-family: sans-serif;
+  margin-bottom: 5vh;
+}
+
+.title {
+  font-size: 1.5em;
+  font-weight: 900;
+  text-align: center;
+  margin: 0;
+}
+
+.fvrt-flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.fvrt-flip-card:hover .fvrt-flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.fvrt-flip-card-front, .fvrt-flip-card-back {
+  box-shadow: 0 8px 14px 0 rgba(0,0,0,0.2);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border: 1px solid coral;
+  border-radius: 1rem;
+}
+
+.fvrt-flip-card-front {
+ background-color: #282C35;
+ color: white;
+ font-size: 3vh;
+}
+
+.fvrt-flip-card-back {
+  background-color: #444E60;
+  color: white;
+  transform: rotateY(180deg);
+}

@@ -112,6 +112,7 @@ function renderCard(element, data) {
         }
 }
 
+
 async function moreInfo(id) {
 
 
@@ -261,18 +262,18 @@ function addToFavoriteList(id){
 }
 
 
-function showFavouriteList(){
+// function showFavouriteList(){
 
-  favoritelistCardContainer.innerHTML=``;
-  if(favoriteListLocalStorage.length==""){
-    favoritelistCardContainer.innerHTML=` No Character in the favorite list`;
-  }else{
-    favoriteListLocalStorage.forEach(id=>{
-      addCharacterToDOM(id)
-    })
-  }
+//   favoritelistCardContainer.innerHTML=``;
+//   if(favoriteListLocalStorage.length==""){
+//     favoritelistCardContainer.innerHTML=` No Character in the favorite list`;
+//   }else{
+//     favoriteListLocalStorage.forEach(id=>{
+//       addCharacterToDOM(id)
+//     })
+//   }
 
-}
+// }
 
 async function fetchDataAndUpdateDom(id){
     const response = await fetch(`${APIURL}/characters/${id}?apikey=${PUBLICKEY}`)

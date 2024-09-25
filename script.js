@@ -15,8 +15,8 @@ const characterImage = document.getElementById('character-image')
 const characterDescription = document.getElementById('character-description')
 
 const favoritelistCardContainer = document.querySelector('.favourite-card-container') 
-let favoriteListLocalStorage = JSON.parse(localStorage.getItem('favoriteListLocalStorage'))
-
+let favoriteListLocalStorage = JSON.parse(localStorage.getItem('favouriteListLocalStorage'))
+console.log(favoriteListLocalStorage)
 
 /*Show section on the menu */
 function showContent(section) {
@@ -249,10 +249,10 @@ function addToFavoriteList(id){
 
   let index = favoriteListLocalStorage.indexOf(id)
 
-  if(index !== -1){
+  if(index !== -1){  // it means id included in the code
     favoriteListLocalStorage.splice(index,1)
     localStorage.setItem('favouriteListLocalStorage',JSON.stringify(favoriteListLocalStorage))
-    showFavoriteList();
+    showFavouriteList();
     return;
   }
 
@@ -262,18 +262,18 @@ function addToFavoriteList(id){
 }
 
 
-// function showFavouriteList(){
+function showFavouriteList(){
 
-//   favoritelistCardContainer.innerHTML=``;
-//   if(favoriteListLocalStorage.length==""){
-//     favoritelistCardContainer.innerHTML=` No Character in the favorite list`;
-//   }else{
-//     favoriteListLocalStorage.forEach(id=>{
-//       addCharacterToDOM(id)
-//     })
-//   }
+  favoritelistCardContainer.innerHTML=``;
+  if(favoriteListLocalStorage.length==""){
+    favoritelistCardContainer.innerHTML=` No Character in the favorite list`;
+  }else{
+    favoriteListLocalStorage.forEach(id=>{
+      addCharacterToDOM(id)
+    })
+  }
 
-// }
+}
 
 async function fetchDataAndUpdateDom(id){
     const response = await fetch(`${APIURL}/characters/${id}?apikey=${PUBLICKEY}`)
@@ -282,9 +282,27 @@ async function fetchDataAndUpdateDom(id){
 }
 
 async function addCharacterToDOM(id){
-  const data = await fetchDataAndUpdateDom(id)
-  console.log('asdfas')
-  console.log(data)
+  const response = await fetchDataAndUpdateDom(id)
+console.log(response)
+  response.data.results.forEach(data=>{
+    const element = document.createElement('div')
+    element.innerHTML=`
+               <div class="fvrt-flip-card">
+                    <div class="fvrt-flip-card-inner">
+                        <div class="fvrt-flip-card-front">
+                             <img src="${data.thumbnail.path + '/standard_fantastic.' + data.thumbnail.extension}" alt="">
+                            <p>${data.name}</p>
+                        </div>
+                        <div class="fvrt-flip-card-back">
+                            <p class="title">BACK</p>
+                            <p>${data.description}</p>
+                        </div>
+                    </div>
+                </div>
+    `;
+
+    favoritelistCardContainer.appendChild(element)
+  })
 }
 
 addEventListener("DOMContentLoaded", (event) => {

@@ -296,8 +296,14 @@ console.log(response)
                         <div class="fvrt-flip-card-back">
                             <p class="title">BACK</p>
                             <p>${data.description}</p>
+                            sahil
                         </div>
+                        <div class="fvrt-rermove-icon">
+                          <h2>Remove</h2>
+                          </div>
+                          manoj
                     </div>
+                    arash
                 </div>
     `;
 

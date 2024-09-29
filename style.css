@@ -1,5 +1,8 @@
 *{margin: 0; padding: 0;}
 
+body{
+  background-color: #181818 !important;
+}
 .navbar{
     /* background-color: #181818; */
     background-color: #393e46;
@@ -116,8 +119,6 @@ header{
 }
 .searchContainer{
   color: red;
-  background-color: #181818;
-  height: 150vh;
   /* background-color: white; */
     /* background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%); */
     /* background-image: url(media/home_bg.png); */
@@ -125,11 +126,12 @@ header{
 }
 .saveContainer{
     color: red;
-    background-color: #343434;
+    /* background-color: #343434; */
     /* background-image: linear-gradient(-20deg, #ddd6f3 0%, #faaca8 100%, #faaca8 100%); */
     /* background-image: url(media/home_bg.png); */
     height: 91.7vh;
 }
+
 /* --------------- card ----------------- */
 .search_card{
     /* border: 2px solid red; */
@@ -332,7 +334,7 @@ header{
   transform: rotateY(180deg);
 }
 
-.flip-card-front, .flip-card-back {
+.flip-card-front {
   box-shadow: 0 8px 14px 0 rgba(0,0,0,0.2);
   position: absolute;
   display: flex;
@@ -345,7 +347,19 @@ header{
   border: 1px solid coral;
   border-radius: 1rem;
 }
-
+.flip-card-back {
+  box-shadow: 0 8px 14px 0 rgba(0,0,0,0.2);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border: 1px solid coral;
+  border-radius: 1rem;
+}
 .flip-card-front {
   /* background: linear-gradient(120deg, bisque 60%, rgb(255, 231, 222) 88%,
      rgb(255, 211, 195) 40%, rgba(255, 127, 80, 0.603) 48%);
@@ -376,12 +390,12 @@ header{
   /* border: 2px solid yellow; */
 }
 .flip-card-back p{
-  position: absolute;
+  /* position: absolute; */
   margin: 0 1vh;
   /* color: white; */
   /* border: 2px solid green; */
-  top: 5vh;
-  bottom: 0;
+  /* top: 5vh; */
+  /* bottom: 0; */
   font-size: 2.4vh;
   text-align: left;
 }
@@ -975,7 +989,7 @@ width: 100%;
 }
 
 .fvrt-flip-card:hover .fvrt-flip-card-inner {
-  transform: rotateY(180deg);
+  /* transform: rotateY(180deg); */
 }
 
 .fvrt-flip-card-front, .fvrt-flip-card-back {
@@ -983,7 +997,7 @@ width: 100%;
   position: absolute;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   width: 100%;
   height: 100%;
   -webkit-backface-visibility: hidden;
@@ -1005,4 +1019,8 @@ width: 100%;
 }
 .fvrt-flip-card-back .fvrt-remove-icon h2{
   font-size: 1vh;
+}
+
+.center{
+  text-align: center !important;
 }

@@ -97,7 +97,7 @@ function renderCard(element, data) {
                     </div>
                     <div class="flip-card-back" id="movie-info-${data.id}">
                       <p class="title">${data.name}</p>
-                      <p>
+                      <p class="center">
                       ${data.description}
                       </p>
                     </div>
@@ -283,27 +283,24 @@ async function fetchDataAndUpdateDom(id){
 
 async function addCharacterToDOM(id){
   const response = await fetchDataAndUpdateDom(id)
-console.log(response)
   response.data.results.forEach(data=>{
     const element = document.createElement('div')
     element.innerHTML=`
-               <div class="fvrt-flip-card">
-                    <div class="fvrt-flip-card-inner">
-                        <div class="fvrt-flip-card-front">
+               <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
                              <img src="${data.thumbnail.path + '/standard_fantastic.' + data.thumbnail.extension}" alt="">
-                            <p>${data.name}</p>
+                            <p  class="title">${data.name}</p>
+                             
                         </div>
-                        <div class="fvrt-flip-card-back">
+                        <div class="flip-card-back">
                             <p class="title">BACK</p>
-                            <p>${data.description}</p>
-                            sahil
-                        </div>
-                        <div class="fvrt-rermove-icon">
+                            <p class="center">${data.description}</p>
+                         <p class="fvrt-rermove-icon">
                           <h2>Remove</h2>
-                          </div>
-                          manoj
+                          </p>
+                        </div>
                     </div>
-                    arash
                 </div>
     `;
 
